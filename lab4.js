@@ -1,0 +1,33 @@
+var button1 = document.getElementById('button1');
+
+
+
+    $('#button1').click(function(){
+        var returnMsg;
+var item=$( "#item" ).val();
+
+        $(document).ready(function() {
+ $.ajax({
+       
+        url: 'http://localhost.localdomain:8983/solr/collection1_shard1_replica1/select?q=*'+item+'*&wt=json&indent=true',
+        async: false,
+        contentType: "application/json",
+        dataType: 'jsonp'
+       
+    }).then(function(data) {
+     
+     $.each(data, function(idx, obj) {
+	 returnMsg = "User is" + obj.id;
+         
+         document.getElementById('write').innerHTML = returnmsg;
+});
+    });
+
+
+
+    
+
+    
+
+
+button1.addEventListener('click', onClick, false);
